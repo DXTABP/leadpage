@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bruno da silva oliveira | Portfólio SAP MM-SD & ABAP</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --primary: #005f83; /* SAP Blue */
+      --primary-dark: #003d5b;
+      --secondary: #4cb5ae; /* SAP Teal */
+      --accent: #ff7e5f; /* SAP Orange */
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --light-gray: #e9ecef;
+      --transition: all 0.3s ease;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
+      --sap-gold: #F0AB00;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+      transition: var(--transition);
+      overflow-x: hidden;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #f5f5f5;
+    }
+
+    body.dark-mode .card,
+    body.dark-mode .timeline-item,
+    body.dark-mode .skill-item,
+    body.dark-mode .form-control,
+    body.dark-mode .navbar,
+    body.dark-mode .flip-card {
+      background-color: #1e1e1e;
+      color: #f5f5f5;
+    }
+
+    body.dark-mode .form-control {
+      background-color: #2d2d2d;
+      color: #f5f5f5;
+      border-color: #444;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--primary-dark);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      margin: 1rem auto;
+    }
+
+    .sap-badge {
+      background: var(--primary);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      display: inline-block;
+      margin-left: 0.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      color: white;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-sap {
+      background: var(--sap-gold);
+      color: var(--dark);
+    }
+
+    .btn-sap:hover {
+      background: #d89b00;
+      color: var(--dark);
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand img {
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .navbar-menu {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar-item {
+      margin-left: 2rem;
+    }
+
+    .navbar-link {
+      color: var(--dark);
+      font-weight: 600;
+      position: relative;
+    }
+
+    .navbar-link:hover {
+      color: var(--primary);
+    }
+
+    .navbar-link:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .navbar-link:hover:after {
+      width: 100%;
+    }
+
+    .navbar-toggler {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--dark);
+      margin-left: 1rem;
+    }
+
+    /* Language Switcher */
+    .language-switcher {
+      display: flex;
+      margin-left: 1rem;
+    }
+
+    .language-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      opacity: 0.6;
+      transition: var(--transition);
+    }
+
+    .language-btn.active {
+      opacity: 1;
+      font-weight: bold;
+    }
+
+    .language-btn:first-child {
+      border-right: 1px solid var(--gray);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLDk1LDEzMSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+      opacity: 0.8;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s ease;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: var(--secondary);
+      animation: fadeInDown 1s ease 0.2s forwards;
+      opacity: 0;
+    }
+
+    .hero-text {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      animation: fadeInDown 1s ease 0.4s forwards;
+      opacity: 0;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      animation: fadeInUp 1s ease 0.6s forwards;
+      opacity: 0;
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 2rem;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    /* About Section */
+    .about {
+      background-color: white;
+      position: relative;
+    }
+
+    .about::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLDk1LDEzMSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+      opacity: 0.5;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-image {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-text h3 {
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .about-skills {
+      margin-top: 2rem;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .skill-tag {
+      background: var(--light-gray);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .skill-tag.primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .skill-tag.secondary {
+      background: var(--secondary);
+      color: white;
+    }
+
+    .skill-tag.accent {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* Goals Section */
+    .goals-timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-left: 50px;
+    }
+    
+    .goals-timeline:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20px;
+      height: 100%;
+      width: 4px;
+      background: var(--primary);
+    }
+    
+    .goal {
+      position: relative;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    .goal:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .goal-icon {
+      position: absolute;
+      left: -50px;
+      top: 20px;
+      width: 40px;
+      height: 40px;
+      background: white;
+      border: 3px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+    
+    .goal.achieved .goal-icon {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .goal.current .goal-icon {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .goal.future .goal-icon {
+      background: var(--light-gray);
+      border-color: var(--gray);
+      color: var(--dark);
+    }
+
+    /* Experience Section */
+    .experience {
+      background: var(--light-gray);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .experience::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLDk1LDEzMSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIi8+PC9zdmc+');
+      opacity: 0.3;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    .timeline:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      background: var(--primary);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .timeline-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .timeline-item:nth-child(odd) {
+      margin-right: calc(50% + 2rem);
+    }
+
+    .timeline-item:nth-child(even) {
+      margin-left: calc(50% + 2rem);
+    }
+
+    .timeline-date {
+      position: absolute;
+      top: 1.5rem;
+      width: 120px;
+      padding: 0.5rem;
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-date {
+      right: calc(100% + 2rem);
+    }
+
+    .timeline-item:nth-child(even) .timeline-date {
+      left: calc(100% + 2rem);
+    }
+
+    .timeline-content h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content h4 {
+      color: var(--gray);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .timeline-content p {
+      margin-bottom: 0;
+    }
+
+    /* Skills Section */
+    .skills {
+      position: relative;
+    }
+
+    .skills::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLDk1LDEzMSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIi8+PC9zdmc+');
+      opacity: 0.3;
+    }
+
+    .skills-dashboard {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .skills-chart-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .skills-legend {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .skills-legend li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    
+    .legend-color {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .skills-filter {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .skills-filter button {
+      padding: 0.5rem 1rem;
+      background: var(--light-gray);
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .skills-filter button.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .skill-item {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .skill-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .skill-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .skill-item h3 {
+      margin-bottom: 1rem;
+    }
+
+    .skill-bar {
+      height: 10px;
+      background: var(--light-gray);
+      border-radius: 5px;
+      margin-top: 1rem;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 5px;
+      transition: width 1.5s ease;
+    }
+
+    /* Flip Cards */
+    .flip-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+      perspective: 1000px;
+    }
+
+    .flip-card {
+      background-color: transparent;
+      height: 200px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      cursor: pointer;
+    }
+
+    .flip-card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .flip-card-front {
+      background: white;
+      color: var(--dark);
+    }
+
+    .flip-card-back {
+      background: var(--primary);
+      color: white;
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Projects Section */
+    .projects {
+      background: var(--light-gray);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .projects::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLDk1LDEzMSwwLjAzKSIvPjwvcGF0dGVybj4+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+      opacity: 0.3;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .project-image {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,95,131,0.1), rgba(0,95,131,0.3));
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.1);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-content h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .project-content p {
+      margin-bottom: 1rem;
+      color: var(--gray);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-tag {
+      background: var(--light-gray);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .project-context-menu {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .project-context-menu:hover {
+      background: white;
+    }
+
+    .context-menu-items {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: var(--shadow-hover);
+      overflow: hidden;
+      display: none;
+      z-index: 3;
+    }
+
+    .project-card:hover .context-menu-items {
+      display: block;
+    }
+
+    .context-menu-item {
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: var(--transition);
+    }
+
+    .context-menu-item:hover {
+      background: var(--light-gray);
+    }
+
+    /* Certifications Section */
+    .certifications {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .certifications::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLDk1LDEzMSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+      opacity: 0.3;
+    }
+
+    .certifications-slider {
+      display: flex;
+      gap: 2rem;
+      padding: 1rem 0;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      z-index: 1;
+    }
+
+    .certifications-slider::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .certifications-slider::-webkit-scrollbar-track {
+      background: var(--light-gray);
+    }
+
+    .certifications-slider::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 4px;
+    }
+
+    .certification-card {
+      min-width: 300px;
+      scroll-snap-align: start;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .certification-header {
+      background: var(--primary);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .certification-body {
+      padding: 1.5rem;
+    }
+
+    .certification-body h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .certification-body p {
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+
+    /* GitHub Section */
+    .github {
+      position: relative;
+    }
+
+    .github::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLDk1LDEzMSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+      opacity: 0.3;
+    }
+
+    .github-repos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .repo-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .repo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .repo-meta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Contact Section */
+    .contact {
+      position: relative;
+    }
+
+    .contact::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLDk1LDEzMSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+      opacity: 0.3;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 95, 131, 0.1);
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      width: 100%;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .contact-icon {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .contact-details h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-details p {
+      color: var(--gray);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+      opacity: 0.2;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 100;
+      transition: var(--transition);
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 80px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 99;
+      box-shadow: var(--shadow-hover);
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 25px;
+      background: #333;
+      color: white;
+      border-radius: 5px;
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+
+    .toast.success {
+      background: #4CAF50;
+    }
+
+    .toast.error {
+      background: #F44336;
+    }
+
+    .toast.info {
+      background: #2196F3;
+    }
+
+    /* Pré-loader */
+    .loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .loader {
+      text-align: center;
+    }
+
+    .sap-loader {
+      text-align: center;
+    }
+
+    .sap-logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .loading-bar {
+      width: 200px;
+      height: 4px;
+      background: #f0f0f0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0;
+      background: var(--primary);
+      animation: loading 2s ease-in-out infinite;
+    }
+
+    /* Accessibility Panel */
+    .accessibility-panel {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      background: white;
+      box-shadow: var(--shadow-hover);
+      border-radius: 8px 0 0 8px;
+      overflow: hidden;
+      z-index: 1000;
+    }
+
+    .accessibility-toggle {
+      padding: 1rem;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .accessibility-options {
+      padding: 1rem;
+      display: none;
+    }
+
+    .accessibility-panel.open .accessibility-options {
+      display: block;
+    }
+
+    .accessibility-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+
+    @keyframes loading {
+      0% {
+        width: 0;
+        margin-left: 0;
+      }
+      50% {
+        width: 100%;
+        margin-left: 0;
+      }
+      100% {
+        width: 0;
+        margin-left: 50%;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+      .skills-dashboard {
+        grid-template-columns: 1fr;
+      }
+      .about-image {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .timeline:before {
+        left: 2rem;
+      }
+      .timeline-item {
+        margin-left: 3rem !important;
+        margin-right: 0 !important;
+      }
+      .timeline-item:nth-child(odd) .timeline-date, .timeline-item:nth-child(even) .timeline-date {
+        left: auto;
+        right: calc(100% + 1rem);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar-container {
+        padding: 1rem;
+      }
+      .navbar-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        transition: var(--transition);
+      }
+      .navbar-menu.active {
+        left: 0;
+      }
+      .navbar-item {
+        margin: 1rem 0;
+      }
+      .navbar-toggler {
+        display: block;
+      }
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      .section {
+        padding: 3rem 0;
+      }
+      .accessibility-panel {
+        top: auto;
+        bottom: 80px;
+        transform: none;
+        border-radius: 8px 0 0 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .btn {
+        width: 100%;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .flip-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader-wrapper" id="loader">
+    <div class="loader">
+      <div class="sap-loader">
+        <div class="sap-logo">SAP</div>
+        <div class="loading-bar">
+          <div class="progress"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="navbar-brand">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#005f83"/>
+          <path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" fill="#4cb5ae"/>
+          <path d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z" fill="#ff7e5f"/>
+        </svg> 
+        Bruno da silva oliveira
+      </a>
+      <button class="navbar-toggler" id="navbar-toggler">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="navbar-menu" id="navbar-menu">
+        <li class="navbar-item"><a href="#sobre" class="navbar-link">Sobre</a></li>
+        <li class="navbar-item"><a href="#experiencia" class="navbar-link">Experiência</a></li>
+        <li class="navbar-item"><a href="#habilidades" class="navbar-link">Habilidades</a></li>
+        <li class="navbar-item"><a href="#projetos" class="navbar-link">Projetos</a></li>
+        <li class="navbar-item"><a href="#certificacoes" class="navbar-link">Certificações</a></li>
+        <li class="navbar-item"><a href="#contato" class="navbar-link">Contato</a></li>
+        <li class="navbar-item"><button class="btn btn-outline" id="theme-toggle">Modo Escuro</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Bruno da silva oliveira</h1>
+      <p class="hero-subtitle">Consultor Funcional MM-SD e Desenvolvedor ABAP</p>
+      <p class="hero-text">
+        Iniciante em soluções SAP, com foco em otimização de processos de negócio nos módulos de Logística (MM e SD) e desenvolvimento de sistemas personalizados com ABAP. Minha missão é entregar soluções robustas e eficientes que impulsionam o sucesso das empresas.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contato" class="btn">Entre em Contato</a>
+        <a href="#projetos" class="btn btn-outline">Ver Projetos</a>
+      </div>
+    </div>
+    <a href="#sobre" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+  </header>
+
+  <section class="section about" id="sobre">
+    <div class="container">
+      <h2 class="section-title">Sobre Mim</h2>
+      <div class="about-content">
+        <div class="about-image">
+          <img src= >
+        </div>
+        <div class="about-text">
+          <h3>Uma Jornada em Transformação Digital com SAP</h3>
+          <p>
+            Pronto para iniciar minha carreira em SAP, atuo como um agente de transformação, conectando necessidades de negócio à tecnologia. Minha missão é aplicar meu conhecimento em análise e design para implementar soluções que gerem valor real para os clientes.
+          </p>
+          <p>
+            Minha expertise abrange desde a configuração e personalização de módulos padrão MM e SD até o desenvolvimento de programas ABAP para otimizações e novas funcionalidades, incluindo relatórios, formulários, e interfaces de dados.
+          </p>
+          <div class="about-skills">
+            <h4>Competências Chave:</h4>
+            <div class="skills-list">
+              <span class="skill-tag primary">SAP MM-SD</span>
+              <span class="skill-tag secondary">ABAP</span>
+              <span class="skill-tag accent">SAP Fiori/UI5</span>
+              <span class="skill-tag">Otimização de Processos</span>
+              <span class="skill-tag">Análise de Requisitos</span>
+              <span class="skill-tag">Integração</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section experience" id="experiencia">
+    <div class="container">
+      <h2 class="section-title">Experiência Profissional</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-date">2025 - Atual</span>
+          <div class="timeline-content">
+            <h3>Consultor SAP MM-SD</h3>
+            <h4>Academias</h4>
+            <p>Como consultor S.A.P júnior, tenho a capacidade de transformar requisitos de negócio em soluções funcionais e técnicas nos módulos SAP MM e SD. Estou pronto para contribuir ativamente em projetos de implementação, oferecendo suporte estratégico e garantindo a qualidade e o sucesso da solução.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date">2023 - 2023</span>
+          <div class="timeline-content">
+            <h3>Desenvolvedor ABAP</h3>
+            <h4>ACADEMIA ABAP</h4>
+            <p>Atuação no desenvolvimento e manutenção de programas ABAP, incluindo relatórios interativos, formulários (SmartForms/SAPscript) e otimizações de performance. Colaborei em projetos de migração de dados e melhorias de funcionalidades existentes.</p>
+          </div>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="section skills" id="habilidades">
+    <div class="container">
+      <h2 class="section-title">Minhas Habilidades</h2>
+      <div class="skills-filter">
+        <button class="btn btn-outline active" data-filter="all">Todas</button>
+        <button class="btn btn-outline" data-filter="abap">ABAP</button>
+        <button class="btn btn-outline" data-filter="funcional">Funcional</button>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-item abap">
+          <i class="fas fa-code skill-icon"></i>
+          <h3>ABAP e ABAP OO</h3>
+          <p>Conhecimento Intermediario em linguagem de programação ABAP, incluindo desenvolvimento orientado a objetos para criar soluções modulares e reutilizáveis.</p>
+        </div>
+        <div class="skill-item abap">
+          <i class="fas fa-file-code skill-icon"></i>
+          <h3>Relatórios e Formulários</h3>
+          <p>Criação de relatórios (ALV), formulários (SmartForms, Adobe Forms) e programas de interface com o usuário (Dynpro).</p>
+        </div>
+        <div class="skill-item abap">
+          <i class="fas fa-sync-alt skill-icon"></i>
+          <h3>Interfaces e Conversões</h3>
+          <p>Habilidade com interfaces de dados (BAPIs, RFCs, Web Services) e técnicas de conversão (LSMW, BDC) para integração de sistemas.</p>
+        </div>
+        
+        <div class="skill-item funcional mm">
+          <i class="fas fa-boxes skill-icon"></i>
+          <h3>SAP MM - Gestão de Materiais</h3>
+          <p>Conhecimento do ciclo de compras (MM-PUR), gestão de estoques (MM-IM), inventário físico e avaliação de materiais.</p>
+        </div>
+        <div class="skill-item funcional mm">
+          <i class="fas fa-shopping-cart skill-icon"></i>
+          <h3>MM-PUR (Compras)</h3>
+          <p>Configuração e personalização de requisição de compra, pedido de compra, cotação e contratos.</p>
+        </div>
+        <div class="skill-item funcional mm">
+          <i class="fas fa-warehouse skill-icon"></i>
+          <h3>MM-IM (Inventário)</h3>
+          <p>Conhecimento em recebimento de mercadorias, transferência de estoque e gestão de inventário físico.</p>
+        </div>
+
+        <div class="skill-item funcional sd">
+          <i class="fas fa-truck-loading skill-icon"></i>
+          <h3>SAP SD - Vendas e Distribuição</h3>
+          <p>Experiência em todo o ciclo de vendas, desde a cotação até a fatura, incluindo a gestão de remessas e preços.</p>
+        </div>
+        <div class="skill-item funcional sd">
+          <i class="fas fa-handshake skill-icon"></i>
+          <h3>SD-SLS (Vendas)</h3>
+          <p>Configuração de tipos de documento de vendas, controle de cópia, e determinação de contas.</p>
+        </div>
+        <div class="skill-item funcional sd">
+          <i class="fas fa-file-invoice-dollar skill-icon"></i>
+          <h3>SD-BIL (Faturamento)</h3>
+          <p>Conhecimento em faturamento, determinação de preço, e integração com o módulo de Contabilidade (FI).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section projects" id="projetos">
+    <div class="container">
+      <h2 class="section-title">Principais Projetos</h2>
+      <div class="projects-grid">
+        <div class="project-card" onclick="location.href='#'">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1549692520-acc6669f9e80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Projeto de Desenvolvimento ABAP">
+          </div>
+          <div class="project-content">
+            <h3>Relatório ALV para Controle de Estoque</h3>
+            <p>Desenvolvimento de um relatório customizado para monitoramento de estoque, permitindo filtros avançados e exportação para Excel.</p>
+            <div class="project-tags">
+              <span class="project-tag">ABAP</span>
+              <span class="project-tag">ALV</span>
+              <span class="project-tag">MM</span>
+              <span class="project-tag">Relatórios</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-sm">Ver Detalhes <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card" onclick="location.href='#'">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Projeto de Implementação MM">
+          </div>
+          <div class="project-content">
+            <h3>Implementação do Ciclo de Compras - Rollout</h3>
+            <p>Projeto de implementação do ciclo de compras (P2P) para uma nova planta, incluindo a configuração de requisições, pedidos e inventário.</p>
+            <div class="project-tags">
+              <span class="project-tag">SAP MM</span>
+              <span class="project-tag">P2P</span>
+              <span class="project-tag">Rollout</span>
+              <span class="project-tag">Blueprint</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-sm">Ver Detalhes <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" onclick="location.href='#'">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Projeto de Implementação SD">
+          </div>
+          <div class="project-content">
+            <h3>Otimização do Processo de Faturamento</h3>
+            <p>Otimização do processo de faturamento no módulo SD, implementando lógicas de cálculo de impostos e automações para emissão de notas fiscais eletrônicas.</p>
+            <div class="project-tags">
+              <span class="project-tag">SAP SD</span>
+              <span class="project-tag">Faturamento</span>
+              <span class="project-tag">Condições de Preço</span>
+              <span class="project-tag">Impostos</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-sm">Ver Detalhes <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        </div>
+    </div>
+  </section>
+
+  <section class="section certifications" id="certificacoes">
+    <div class="container">
+      <h2 class="section-title">Certificações e Cursos</h2>
+      <div class="certifications-slider">
+        <div class="certification-card">
+          <div class="certification-header">
+            <h3>SAP Certified Application Associate - SAP S/4HANA Sourcing and Procurement</h3>
+          </div>
+          <div class="certification-body">
+            <p>Estudando para retirar a certificação.</p>
+            <p><strong>Emissor:</strong> </p>
+            <p><strong>Ano:</strong>  </p>
+          </div>
+        </div>
+        <div class="certification-card">
+          <div class="certification-header">
+            <h3>SAP Certified Development Associate - ABAP with SAP NetWeaver 7.50</h3>
+          </div>
+          <div class="certification-body">
+            <p>Estudando para retirar a certificação</p>
+            <p><strong>Emissor:</strong>  </p>
+            <p><strong>Ano:</strong>  </p>
+          </div>
+        </div>
+        <div class="certification-card">
+          <div class="certification-header">
+            <h3>Curso de Consultoria SAP SD</h3>
+          </div>
+          <div class="certification-body">
+            <p>Treinamento completo para atuação como consultor funcional no módulo de Vendas e Distribuição.</p>
+            <p><strong>Emissor:</strong> SPRO</p>
+            <p><strong>Ano:</strong> 2025</p>
+          </div>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="section github" id="github">
+    <div class="container">
+      <h2 class="section-title">Meus Repositórios no GitHub</h2>
+      <div class="github-repos">
+        <div class="repo-card">
+          <h3><i class="fab fa-github"></i> abap-alv-report</h3>
+          <p>Exemplo de código ABAP para um relatório ALV interativo.</p>
+          <div class="repo-meta">
+            <span><i class="fas fa-star"></i> 15</span>
+            <span><i class="fas fa-code-branch"></i> 5</span>
+          </div>
+        </div>
+        <div class="repo-card">
+          <h3><i class="fab fa-github"></i> sap-mm-config-docs</h3>
+          <p>Documentação e exemplos de configurações para o módulo MM.</p>
+          <div class="repo-meta">
+            <span><i class="fas fa-star"></i> 8</span>
+            <span><i class="fas fa-code-branch"></i> 2</span>
+          </div>
+        </div>
+      </div>
+      <a href="https://github.com/DXTABP" class="btn btn-outline" target="_blank">Ver mais no GitHub <i class="fas fa-external-link-alt"></i></a>
+    </div>
+  </section>
+
+  <section class="section contact" id="contato">
+    <div class="container">
+      <h2 class="section-title">Contato</h2>
+      <div class="contact-form">
+        <form>
+          <div class="form-group">
+            <label for="name" class="form-label">Nome</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="message" class="form-label">Mensagem</label>
+            <textarea id="message" name="message" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="btn form-submit">Enviar Mensagem</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <div class="contact-card">
+          <i class="fas fa-envelope contact-icon"></i>
+          <div class="contact-details">
+            <h3>Email</h3>
+            <p>silvaoliveira165@gmail.com</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <i class="fab fa-linkedin contact-icon"></i>
+          <div class="contact-details">
+            <h3>LinkedIn</h3>
+            <p>/https://www.linkedin.com/in/brunodxtr/</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <i class="fas fa-phone-alt contact-icon"></i>
+          <div class="contact-details">
+            <h3>Telefone</h3>
+            <p>(41) 9-88893895</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/brunodxtr/" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/DXTABP" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="URL_WHATSAPP" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <p class="copyright">&copy; 2024 Bruno da silva. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <a href="#hero" class="back-to-top" id="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <a href="https://wa.me/41988893895" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="accessibility-panel" id="accessibility-panel">
+    <div class="accessibility-toggle">
+      <i class="fas fa-universal-access"></i>
+    </div>
+    <div class="accessibility-options">
+      <div class="accessibility-option" id="darkModeToggle">
+        <i class="fas fa-moon"></i> Modo Escuro
+      </div>
+      <div class="accessibility-option" id="highContrastToggle">
+        <i class="fas fa-adjust"></i> Alto Contraste
+      </div>
+      <div class="accessibility-option" id="increaseFont">
+        <i class="fas fa-font"></i> Aumentar Fonte
+      </div>
+      <div class="accessibility-option" id="decreaseFont">
+        <i class="fas fa-font"></i> Diminuir Fonte
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Pré-loader
+      const loader = document.getElementById('loader');
+      setTimeout(() => {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 500);
+      }, 1000);
+
+      // Smooth Scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 70, // Offset para o navbar fixo
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Show/Hide Back to Top button
+      const backToTopBtn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      });
+
+      // Toggle Mobile Menu
+      const navbarToggler = document.getElementById('navbar-toggler');
+      const navbarMenu = document.getElementById('navbar-menu');
+      navbarToggler.addEventListener('click', () => {
+        navbarMenu.classList.toggle('active');
+      });
+
+      // Filter skills
+      const filterButtons = document.querySelectorAll('.skills-filter button');
+      const skillItems = document.querySelectorAll('.skill-item');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const filter = button.dataset.filter;
+          
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+
+          skillItems.forEach(item => {
+            if (filter === 'all' || item.classList.contains(filter)) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Flip card
+      const flipCards = document.querySelectorAll('.flip-card');
+      flipCards.forEach(card => {
+        card.addEventListener('click', () => {
+          card.classList.toggle('flipped');
+        });
+      });
+
+      // Toast Notification
+      function showToast(message, type = 'info') {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = `toast show ${type}`;
+        setTimeout(() => {
+          toast.className = toast.className.replace('show', '');
+        }, 3000);
+      }
+
+      // Accessibility Panel
+      const accessibilityPanel = document.getElementById('accessibility-panel');
+      const accessibilityToggle = document.querySelector('.accessibility-toggle');
+      
+      accessibilityToggle.addEventListener('click', () => {
+        accessibilityPanel.classList.toggle('open');
+      });
+
+      // Dark Mode
+      document.getElementById('darkModeToggle').addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        showToast('Modo escuro ' + (isDarkMode ? 'ativado' : 'desativado'));
+      });
+
+      // High Contrast Mode
+      document.getElementById('highContrastToggle').addEventListener('click', () => {
+        document.body.classList.toggle('high-contrast');
+        showToast('Modo alto contraste ' + 
+          (document.body.classList.contains('high-contrast') ? 'ativado' : 'desativado'));
+      });
+
+      // Increase Font
+      document.getElementById('increaseFont').addEventListener('click', () => {
+        const currentSize = parseFloat(getComputedStyle(document.body).fontSize);
+        document.body.style.fontSize = (currentSize + 1) + 'px';
+        showToast('Tamanho da fonte aumentado');
+      });
+
+      // Decrease Font
+      document.getElementById('decreaseFont').addEventListener('click', () => {
+        const currentSize = parseFloat(getComputedStyle(document.body).fontSize);
+        if (currentSize > 12) {
+          document.body.style.fontSize = (currentSize - 1) + 'px';
+          showToast('Tamanho da fonte diminuído');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
